@@ -1,0 +1,5 @@
+globalgiving-react/node_modules
+globalgiving-express/node_modules
+
+globalgiving-react/.env
+globalgiving-express/.env
