@@ -15,11 +15,10 @@ require('dotenv').config();
 
 const { DEV } = process.env;
 
-const ORIGIN = '*';
 const PORT = process.env.PORT || '3300'; 
 
 app.use(cors({ 
-  origin: ORIGIN,
+  origin: '*',
   credentials: true,
   optionsSuccessStatus: 200
 }));
