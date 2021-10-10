@@ -15,7 +15,7 @@ require('dotenv').config();
 
 const { DEV } = process.env;
 
-const ORIGIN = process.env.DEV ? 'http://localhost:3000' : 'test';
+const ORIGIN = process.env.DEV ? 'http://localhost:3000' : process.env.HOME_URL;
 const PORT = process.env.PORT || '3300'; 
 
 app.use(cors({ 
