@@ -20,6 +20,8 @@
 
 ## Environment Variables
 - Set `DEV` in `globalgiving-express` and `REACT_APP_DEV` in `globalgiving-react` to true to run in development
+- Set `REACT_APP_HOME` in `globalgiving-react` to deployed HOME url
+- Set `REACT_APP_SERVER` in `globalgiving-react` to deployed SERVER url
 - Set `API_KEY`in `globalgiving-express` to API key
 - Set `API_EMAIL` in `globalgiving-express` to GlobalGiving login email
 - Set `API_PASSWORD`in `globalgiving-express` to GlobalGiving login password
