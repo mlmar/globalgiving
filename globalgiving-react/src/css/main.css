@@ -1,0 +1,238 @@
+@import url('https://fonts.googleapis.com/css2?family=Heebo:wght@400;600;900&display=swap');
+
+:root {
+  --green: rgb(74, 233, 74);
+  --light-green: rgb(186, 254, 186);
+  --gray: rgb(238, 246, 247);
+  --space: 2vmax;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: 'Heebo', sans-serif;
+}
+
+html, body, #root, .app {
+  display: flex;
+  flex: 1 1;
+  flex-direction: column;
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+}
+
+label, p {
+  font-size: 1.1rem;
+  font-weight: 400;
+}
+
+.medium {
+  font-size: 1.2rem;
+}
+
+.large {
+  font-size: 1.4rem;
+}
+
+.bold {
+  font-weight: 900;
+}
+
+.gray {
+  color: rgb(44, 44, 44);
+}
+
+.flex, .flex-col {
+  display: flex;
+}
+
+.flex-col {
+  flex-direction: column;
+}
+
+.flex-fill {
+  flex: 1 1;
+}
+
+
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  flex: 1 1;
+  overflow: overlay;
+  padding: var(--space);
+}
+
+.no-scroll {
+  overflow: hidden !important;
+}
+
+.title {
+  display: flex;
+  align-items: center;
+  height: 6rem;
+
+  font-size: 5rem;
+  font-weight: 900;
+  color: black;
+  border-bottom: .5rem solid black;
+}
+
+
+.image-wrapper {
+  display: flex;
+  overflow: hidden;
+  position: relative;
+}
+
+.image-wrapper img {
+  min-width: 100%;
+  min-height: 100%;
+  top: 0;
+  left: 0;
+  position: absolute;
+}
+
+.image-wrapper p {
+  display: flex;
+  position: absolute;
+  left: 0;
+  top: 0;
+  color: white;
+  background: black;
+  height: 100%;
+}
+
+.projects {
+  display: flex;
+  flex-wrap: wrap;
+  margin-top: var(--space);
+  justify-content: space-between;
+}
+
+.project-preview, .project-preview * {
+  cursor: pointer;
+}
+
+.project-preview:hover {
+  opacity: .5;
+}
+
+.project-preview {
+  display: flex;
+  flex-direction: column;
+  flex-basis: 32%;
+  margin-bottom: var(--space);
+  background: var(--gray);
+}
+
+.project-preview .image-wrapper {
+  height: 30vh;
+}
+
+.project-preview label {
+  margin: 1rem 1rem .5rem;
+}
+
+.progress {
+  display: flex;
+  width: 100%;
+  height: .5rem;
+  background: var(--light-green);
+}
+
+.progress div {
+  background: var(--green);
+}
+
+.project-preview.placeholder {
+  animation: load .7s linear 0s infinite alternate;
+}
+
+@keyframes load {
+  0% { opacity: 1; }
+  100% { opacity: .6; }
+}
+
+.project-full {
+  position: fixed;
+  top: 0;
+  left: 0;
+
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  width: 100%;
+  overflow: auto;
+  background: white;
+}
+
+.exit-btn {
+  display: flex;
+  position: fixed;
+  z-index: 3;
+  top: 2rem;
+  right: 3rem;
+  height: 3rem;
+  width: 3rem;
+  font-size: 4rem;
+  align-items: center;
+  justify-content: center;
+  color: black;
+  background: none;
+  border: none;
+  cursor: pointer;
+  transition: transform .2s ease;
+}
+
+.exit-btn:hover {
+  transform: scale(1.1);
+}
+
+.description {
+  display: flex;
+  flex-direction: column;
+  min-height: 100%;
+  background: white;
+  padding: var(--space);
+}
+
+.project-full img {
+  width: 100%;
+  height: auto;
+}
+
+.description > section {
+  margin: 1rem 0;
+}
+
+.description > section > * {
+  margin: .5rem 0;
+}
+
+.fade-in {
+  animation: fade-in 1s linear 0s normal forwards;
+}
+
+@keyframes fade-in {
+  0% { opacity: 0 }
+  100% { opacity: 1 }
+}
+
+@media screen and (max-width: 1000px) {
+  .project-preview {
+    flex-basis: 49%;
+  }
+}
+
+@media screen and (max-width: 700px) {
+  .project-preview {
+    flex-basis: 100%;
+  }
+
+  .title {
+    font-size: 3rem;
+  }
+}

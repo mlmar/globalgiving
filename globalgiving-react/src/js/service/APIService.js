@@ -1,12 +1,23 @@
-import { post, get } from './HTTPService.js';
+import { get } from './HTTPService.js';
 import { SERVER_URL } from '../util/System.js'
 
+// only need to authenticate for protected routes, not necessary in this project
 export const authenticate = async () => {
   const response = await get(SERVER_URL + '/api/authenticate');
-  console.log(response);
+  if(response?.status === 0) {
+    return response;
+  } else {
+    return null;
+  }
 }
 
-export const getProjects = async() => {
-  const response = await get(SERVER_URL + '/api/projects');
-  console.log(response);
+// fetch projects with optional {query}
+// {query} should contain nextProjectId if new batch of projects are fetched
+export const getProjects = async(query) => {
+  const response = await get(SERVER_URL + '/api/projects', query);
+  if(response?.status === 0) {
+    return response;
+  } else {
+    return null;
+  }
 }

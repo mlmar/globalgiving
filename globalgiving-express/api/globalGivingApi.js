@@ -35,9 +35,9 @@ router.get('/authenticate', async (req, res) => {
 });
 
 router.get('/projects', async (req, res) => {
-  const response = await get(URL + ROUTE_PROJECTS, { 
-    api_key 
-  });
+  const { nextProjectId } = req.query;
+  const query = nextProjectId ? { api_key, nextProjectId } : { api_key };
+  const response = await get(URL + ROUTE_PROJECTS, query);
 
   if(response?.projects) {
     console.log('Successful project retrieval');

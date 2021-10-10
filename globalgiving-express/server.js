@@ -1,4 +1,13 @@
 // server setup
+
+/* ENV FILE
+  DEV=true
+  API_KEY=************
+  API_EMAIL=**********
+  API_PASSWORD=*******
+*/
+
+
 const express = require('express');
 const app = express();
 const cors = require('cors');
