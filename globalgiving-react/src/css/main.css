@@ -126,6 +126,7 @@ label, p {
   flex-basis: 32%;
   margin-bottom: var(--space);
   background: var(--gray);
+  opacity: 1;
 }
 
 .project-preview .image-wrapper {
@@ -148,12 +149,12 @@ label, p {
 }
 
 .project-preview.placeholder {
-  animation: load .7s linear 0s infinite alternate;
+  animation: load .6s linear 0s infinite alternate;
 }
 
 @keyframes load {
   0% { opacity: 1; }
-  100% { opacity: .6; }
+  100% { opacity: .3; }
 }
 
 .project-full {
