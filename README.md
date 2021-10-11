@@ -9,6 +9,7 @@
 - Node express server
 - ReactJS -- bootstrapped with [Create React App](https://github.com/facebook/create-react-app)
 - Hosted through Vercel at [findacharity.vercel.app](https://findacharity.vercel.app)
+  - _Since Global Giving API sometimes takes 10+ seconds to load, the serverless function may timeout due to free Vercel hosting limits_
 
 
 

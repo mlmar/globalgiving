@@ -23,6 +23,9 @@ app.use(cors({
   optionsSuccessStatus: 200
 }));
 
+app.use(express.json());
+app.use(express.urlencoded());
+
 // int status, string message, object data
 respond = (status, message, data) => { return { status, message, data } };
 

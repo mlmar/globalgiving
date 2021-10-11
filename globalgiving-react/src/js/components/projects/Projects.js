@@ -13,8 +13,10 @@ const Projects = () => {
   useEffect(() => {
     const fetch = async () => {
       const response = await getProjects();
-      setProjects(response.data);
-      setFetching(false);
+      if(response !== null) {
+        setProjects(response);
+        setFetching(false);
+      }
     }
     fetch();
   }, []);
@@ -25,14 +27,17 @@ const Projects = () => {
     const fetch = async () => {
       setFetching(true);
       const response = await getProjects({ nextProjectId: projects.nextProjectId });
-      setProjects((prev) => {
-        return {
-          ...prev, 
-          ...response.data, 
-          project: [ ...prev.project, ...response.data.project ]
-        }
-      });
-      setFetching(false);
+
+      if(response !== null) {
+        setProjects((prev) => {
+          return {
+            ...prev, 
+            ...response, 
+            project: [ ...prev.project, ...response.project ]
+          }
+        });
+        setFetching(false);
+      }
     }
     
     // only fetch if at bottom of page and not already fetching

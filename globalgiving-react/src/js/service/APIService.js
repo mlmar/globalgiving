@@ -5,7 +5,7 @@ import { SERVER_URL } from '../util/System.js'
 export const authenticate = async () => {
   const response = await get(SERVER_URL + '/api/authenticate');
   if(response?.status === 0) {
-    return response;
+    return response.data;
   } else {
     return null;
   }
@@ -16,7 +16,7 @@ export const authenticate = async () => {
 export const getProjects = async(query) => {
   const response = await get(SERVER_URL + '/api/projects', query);
   if(response?.status === 0) {
-    return response;
+    return response.data;
   } else {
     return null;
   }
