@@ -8,21 +8,20 @@ const Projects = () => {
   const [projects, setProjects] = useState(null);
   const [selected, setSelected] = useState(null);
 
-  const scrollRef = useRef(null);
-  const { scrollBottom } = useScroll(scrollRef);
-  const [fetching, setFetching] = useState(false);
 
   // initial fetch -> just get first 10 projects
   useEffect(() => {
     const fetch = async () => {
       const response = await getProjects();
       setProjects(response.data);
+      setFetching(false);
     }
     fetch();
   }, []);
 
-  // when user scrolls to bottom of the page, fetch another 10 projects and append it to the current set
-  useEffect(() => {
+
+  const scrollRef = useRef(null);
+  useScroll(({ scrollBottom }) => {
     const fetch = async () => {
       setFetching(true);
       const response = await getProjects({ nextProjectId: projects.nextProjectId });
@@ -37,11 +36,12 @@ const Projects = () => {
     }
     
     // only fetch if at bottom of page and not already fetching
-    if(projects && !fetching && scrollBottom === 0) {
+    if(projects?.nextProjectId && !fetching && scrollBottom === 0) {
       fetch();
     }
+  }, scrollRef);
+  const [fetching, setFetching] = useState(true);
 
-  }, [scrollBottom, fetching, projects])
 
   // set of placeholder project previews to use when loading
   const getPlaceholders = () => {
@@ -66,7 +66,6 @@ const Projects = () => {
       <div className={"wrapper" + (selected ? " no-scroll" : "")} ref={scrollRef}>
         <label className="title"> Find a Charity </label>
         <div className="projects">
-          { !projects && getPlaceholders()}
           { projects?.project?.map((project, i) => (
             <ProjectPreview 
             imageURL={project.image?.imagelink?.[3]?.url} 
