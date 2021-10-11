@@ -20,7 +20,8 @@ const PORT = process.env.PORT || '3300';
 app.use(cors({ 
   origin: '*',
   credentials: true,
-  optionsSuccessStatus: 200
+  optionsSuccessStatus: 200,
+  allowedHeaders: ['Content-Type']
 }));
 
 app.use(express.json());
